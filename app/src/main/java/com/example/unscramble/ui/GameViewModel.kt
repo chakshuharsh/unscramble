@@ -118,11 +118,11 @@ class GameViewModel : ViewModel() {
             }
         }
     }
-
+// This function takes a string and shuffles it and then returns the shuffled string
     private fun shuffleCurrentWord(word: String): String {
-        val tempWord = word.toCharArray()
+        val tempWord = word.toCharArray()//conversion
         // Scramble the word
-        tempWord.shuffle()
+        tempWord.shuffle()//shuffle function
         while (String(tempWord) == word) {
             tempWord.shuffle()
         }
