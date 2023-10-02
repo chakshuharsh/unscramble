@@ -36,7 +36,7 @@ class GameViewModel : ViewModel() {
     // Game UI state
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
-
+//.asStateFlow() makes this mutable state flow a read - only state flow
     var userGuess by mutableStateOf("")
         private set
 
@@ -82,6 +82,9 @@ class GameViewModel : ViewModel() {
         // Reset user guess
         updateUserGuess("")
     }
+        // Reset user guess
+
+
 
     /*
      * Skip to next word
@@ -97,13 +100,13 @@ class GameViewModel : ViewModel() {
      * current game state.
      */
     private fun updateGameState(updatedScore: Int) {
-        if (usedWords.size == MAX_NO_OF_WORDS){
+        if (usedWords.size == MAX_NO_OF_WORDS){// maximum number of word in a single game
             //Last round in the game, update isGameOver to true, don't pick a new word
             _uiState.update { currentState ->
                 currentState.copy(
                     isGuessedWordWrong = false,
                     score = updatedScore,
-                    isGameOver = true
+                    isGameOver = true//game will be over
                 )
             }
         } else{
